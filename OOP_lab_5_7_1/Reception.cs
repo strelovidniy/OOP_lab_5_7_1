@@ -34,10 +34,10 @@
         }
         public Reception(string surename, string profession, string day, string shift, int visitorsCount)
         {
-            Surename = surename;
-            Profession = profession;
-            Day = day;
-            Shift = shift;
+            Surename = UkrainianI(surename);
+            Profession = UkrainianI(profession);
+            Day = UkrainianI(day);
+            Shift = UkrainianI(shift);
             VisitorsCount = visitorsCount;
         }
     }

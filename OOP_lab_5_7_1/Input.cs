@@ -58,7 +58,11 @@ namespace OOP_lab_5_7_1
                     Output.Write();
                     goto Start;
 
+                case ConsoleKey.Escape:
+                    return;
+
                 default:
+                    Console.WriteLine();
                     goto Start;
             }
         }

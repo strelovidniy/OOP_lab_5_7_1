@@ -17,6 +17,21 @@
             set => _profession = value;
         }
 
+        public virtual string UkrainianI(string str) 
+        {
+            char[] ch = str.ToCharArray();
+
+            for (int i = 0; i < ch.Length; ++i)
+            {
+                if (ch[i] == '?')
+                {
+                    ch[i] = 'i';
+                }
+            }
+
+            return new string(ch);
+        }
+
         public Doctor()
         {
             _surename = "Не вказано.";
@@ -25,8 +40,8 @@
 
         public Doctor(string surename, string profession)
         {
-            Surename = surename;
-            Profession = profession;
+            Surename = UkrainianI(surename);
+            Profession = UkrainianI(profession);
         }
     }
 }
