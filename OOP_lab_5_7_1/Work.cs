@@ -28,7 +28,7 @@ namespace OOP_lab_5_7_1
             file.WriteLine(Console.ReadLine());
 
             Retry:
-            Console.Write("Кiлькiсть вiдвiдувачiв:");
+            Console.Write("Кiлькiсть вiдвiдувачiв: ");
 
             try
             {
@@ -67,7 +67,7 @@ namespace OOP_lab_5_7_1
             }
             catch (SystemException)
             {
-                Console.WriteLine("Такого запису не існує!");
+                Console.WriteLine("Такого запису не iснує!");
                 return;
             }
 
@@ -85,7 +85,7 @@ namespace OOP_lab_5_7_1
                 }
             }
 
-            Console.Write("Видалено!\n");
+            Console.Write("Видалено.\n");
 
             file.Close();
 
@@ -113,7 +113,7 @@ namespace OOP_lab_5_7_1
             }
             catch (SystemException)
             {
-                Console.WriteLine("Такого запису не існує!");
+                Console.WriteLine("Такого запису не iснує!");
                 return;
             }
 
@@ -142,7 +142,7 @@ namespace OOP_lab_5_7_1
                     file.WriteLine(Console.ReadLine());
 
                 Retry:
-                    Console.Write("Кiлькiсть вiдвiдувачiв:");
+                    Console.Write("Кiлькiсть вiдвiдувачiв: ");
 
                     try
                     {
@@ -165,7 +165,7 @@ namespace OOP_lab_5_7_1
                 }
             }
 
-            Console.Write("Змiни внесено!\n");
+            Console.Write("Змiни внесено.\n");
 
             file.Close();
 
@@ -175,6 +175,53 @@ namespace OOP_lab_5_7_1
         public static void InitialiseBase(int n)
         {
             Program.doctors = new Reception[n];
+        }
+
+        public static void Sum()
+        {
+            int sum = 0;
+
+            for (int i = 0; i < Program.doctors.Length; ++i)
+            {
+                sum += Program.doctors[i].VisitorsCount;
+            }
+
+            Console.WriteLine("\nЗагальна кiлькiсть вiдвiдувачiв: {0}.", sum);
+        }
+
+        public static void Minimum()
+        {
+            int minIndex = 0;
+
+            for (int i = 0; i < Program.doctors.Length; ++i)
+            {
+                if (Program.doctors[minIndex].VisitorsCount >= Program.doctors[i].VisitorsCount)
+                {
+                    minIndex = i;
+                }
+            }
+
+            Console.WriteLine("Загальна кiлькiсть вiдвiдувачiв:");
+            Console.WriteLine(Output.Format, "Прiзище", "Фах", "День", "Змiна", "Кiлькiсть вiдвiдувачiв");
+
+            for (int i = 0; i < Program.doctors.Length; ++i)
+            {
+                if (Program.doctors[minIndex].VisitorsCount == Program.doctors[i].VisitorsCount)
+                {
+                    Console.WriteLine(Output.Format, Program.doctors[i].Surename, Program.doctors[i].Profession, Program.doctors[i].Day, Program.doctors[i].Shift, Program.doctors[i].VisitorsCount);
+                }
+            }
+        }
+
+        public static void Length()
+        {
+            Console.WriteLine();
+
+            Output.Write();
+
+            Console.Write("Порядковий номер запису для визначення довжини прiзвища лiкаря: ");
+
+            Console.WriteLine(new Doctor().Length(int.Parse(Console.ReadLine())));
         }
     }
 }
